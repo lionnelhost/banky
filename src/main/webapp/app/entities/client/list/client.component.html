@@ -1,0 +1,171 @@
+<div>
+  <h2 id="page-heading" data-cy="ClientHeading">
+    <span jhiTranslate="bankyApp.client.home.title">Clients</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="bankyApp.client.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-client"
+        [routerLink]="['/client/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bankyApp.client.home.createLabel">Créer un nouveau Client</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (clients?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bankyApp.client.home.notFound">Aucun Client trouvé</span>
+    </div>
+  }
+
+  @if (clients && clients.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="idClient">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.idClient">Id Client</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="indiceClient">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.indiceClient">Indice Client</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nomClient">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.nomClient">Nom Client</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="prenomClient">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.prenomClient">Prenom Client</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="raisonSociale">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.raisonSociale">Raison Sociale</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="telephone">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.telephone">Telephone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contrat.idContrat">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.contrat">Contrat</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="typeClient.idTypeClient">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.client.typeClient">Type Client</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (client of clients; track trackIdClient) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/client', client.idClient, 'view']">{{ client.idClient }}</a>
+              </td>
+              <td>{{ client.indiceClient }}</td>
+              <td>{{ client.nomClient }}</td>
+              <td>{{ client.prenomClient }}</td>
+              <td>{{ client.raisonSociale }}</td>
+              <td>{{ client.telephone }}</td>
+              <td>{{ client.email }}</td>
+              <td>
+                @if (client.contrat) {
+                  <div>
+                    <a [routerLink]="['/contrat', client.contrat.idContrat, 'view']">{{ client.contrat.idContrat }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (client.typeClient) {
+                  <div>
+                    <a [routerLink]="['/type-client', client.typeClient.idTypeClient, 'view']">{{ client.typeClient.idTypeClient }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/client', client.idClient, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a [routerLink]="['/client', client.idClient, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(client)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (clients && clients.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (contratAbonnementCompte(); as contratAbonnementCompteRef) {
+      <div>
+        <h2 data-cy="contratAbonnementCompteDetailsHeading">
+          <span jhiTranslate="bankyApp.contratAbonnementCompte.detail.title">Contrat Abonnement Compte</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ contratAbonnementCompteRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnementCompte.idContrat">Id Contrat</span></dt>
+          <dd>
+            <span>{{ contratAbonnementCompteRef.idContrat }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnementCompte.idAbonne">Id Abonne</span></dt>
+          <dd>
+            <span>{{ contratAbonnementCompteRef.idAbonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnementCompte.idCompteBancaire">Id Compte Bancaire</span></dt>
+          <dd>
+            <span>{{ contratAbonnementCompteRef.idCompteBancaire }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnementCompte.contrat">Contrat</span></dt>
+          <dd>
+            @if (contratAbonnementCompte()!.contrat) {
+              <div>
+                <a [routerLink]="['/contrat', contratAbonnementCompte()!.contrat?.idContrat, 'view']">{{
+                  contratAbonnementCompteRef.contrat?.idContrat
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnementCompte.abonne">Abonne</span></dt>
+          <dd>
+            @if (contratAbonnementCompte()!.abonne) {
+              <div>
+                <a [routerLink]="['/abonne', contratAbonnementCompte()!.abonne?.idAbonne, 'view']">{{
+                  contratAbonnementCompteRef.abonne?.idAbonne
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnementCompte.compteBancaire">Compte Bancaire</span></dt>
+          <dd>
+            @if (contratAbonnementCompte()!.compteBancaire) {
+              <div>
+                <a [routerLink]="['/compte-bancaire', contratAbonnementCompte()!.compteBancaire?.idCompteBancaire, 'view']">{{
+                  contratAbonnementCompteRef.compteBancaire?.idCompteBancaire
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/contrat-abonnement-compte', contratAbonnementCompteRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

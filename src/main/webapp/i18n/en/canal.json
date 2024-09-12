@@ -1,0 +1,25 @@
+{
+  "bankyApp": {
+    "canal": {
+      "home": {
+        "title": "Canals",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Canal",
+        "createOrEditLabel": "Create or edit a Canal",
+        "notFound": "No Canals found"
+      },
+      "created": "A new Canal is created with identifier {{ param }}",
+      "updated": "A Canal is updated with identifier {{ param }}",
+      "deleted": "A Canal is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Canal {{ id }}?"
+      },
+      "detail": {
+        "title": "Canal"
+      },
+      "idCanal": "Id Canal",
+      "libelle": "Libelle",
+      "dispositifSercurite": "Dispositif Sercurite"
+    }
+  }
+}

@@ -1,0 +1,189 @@
+<div>
+  <h2 id="page-heading" data-cy="BanqueHeading">
+    <span jhiTranslate="bankyApp.banque.home.title">Banques</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="bankyApp.banque.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-banque"
+        [routerLink]="['/banque/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bankyApp.banque.home.createLabel">Créer un nouveau Banque</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (banques?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bankyApp.banque.home.notFound">Aucun Banque trouvé</span>
+    </div>
+  }
+
+  @if (banques && banques.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="idBanque">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.idBanque">Id Banque</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="code">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.code">Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="devise">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.devise">Devise</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="langue">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.langue">Langue</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="logo">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.logo">Logo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeSwift">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.codeSwift">Code Swift</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeIban">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.codeIban">Code Iban</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codePays">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.codePays">Code Pays</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fuseauHoraire">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.fuseauHoraire">Fuseau Horaire</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cutOffTime">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.cutOffTime">Cut Off Time</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeParticipant">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.codeParticipant">Code Participant</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="libelleParticipant">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.banque.libelleParticipant">Libelle Participant</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (banque of banques; track trackIdBanque) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/banque', banque.idBanque, 'view']">{{ banque.idBanque }}</a>
+              </td>
+              <td>{{ banque.code }}</td>
+              <td [jhiTranslate]="'bankyApp.Devise.' + (banque.devise ?? 'null')">
+                {{ { null: '', XOF: 'XOF', XAF: 'XAF', EUR: 'EUR', USD: 'USD' }[banque.devise ?? 'null'] }}
+              </td>
+              <td [jhiTranslate]="'bankyApp.Langue.' + (banque.langue ?? 'null')">
+                {{ { null: '', FR: 'FR', EN: 'EN' }[banque.langue ?? 'null'] }}
+              </td>
+              <td>{{ banque.logo }}</td>
+              <td>{{ banque.codeSwift }}</td>
+              <td>{{ banque.codeIban }}</td>
+              <td>{{ banque.codePays }}</td>
+              <td>{{ banque.fuseauHoraire }}</td>
+              <td>{{ banque.cutOffTime }}</td>
+              <td>{{ banque.codeParticipant }}</td>
+              <td>{{ banque.libelleParticipant }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/banque', banque.idBanque, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a [routerLink]="['/banque', banque.idBanque, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(banque)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (banques && banques.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

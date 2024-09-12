@@ -1,0 +1,24 @@
+{
+  "bankyApp": {
+    "jourFerier": {
+      "home": {
+        "title": "Jour Feriers",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Jour Ferier",
+        "createOrEditLabel": "Create or edit a Jour Ferier",
+        "notFound": "No Jour Feriers found"
+      },
+      "created": "A new Jour Ferier is created with identifier {{ param }}",
+      "updated": "A Jour Ferier is updated with identifier {{ param }}",
+      "deleted": "A Jour Ferier is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Jour Ferier {{ id }}?"
+      },
+      "detail": {
+        "title": "Jour Ferier"
+      },
+      "idJourFerie": "Id Jour Ferie",
+      "libelle": "Libelle"
+    }
+  }
+}

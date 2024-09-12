@@ -1,0 +1,25 @@
+{
+  "bankyApp": {
+    "variableNotification": {
+      "home": {
+        "title": "VariableNotifications",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Variable Notification",
+        "createOrEditLabel": "Créer ou éditer un Variable Notification",
+        "notFound": "Aucun Variable Notification trouvé"
+      },
+      "created": "Un nouveau Variable Notification a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Variable Notification avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Variable Notification avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Variable Notification {{ id }} ?"
+      },
+      "detail": {
+        "title": "Variable Notification"
+      },
+      "idVarNotification": "Id Var Notification",
+      "codeVariable": "Code Variable",
+      "description": "Description"
+    }
+  }
+}

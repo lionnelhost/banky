@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (abonne(); as abonneRef) {
+      <div>
+        <h2 data-cy="abonneDetailsHeading"><span jhiTranslate="bankyApp.abonne.detail.title">Abonne</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.abonne.idAbonne">Id Abonne</span></dt>
+          <dd>
+            <span>{{ abonneRef.idAbonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.indiceClient">Indice Client</span></dt>
+          <dd>
+            <span>{{ abonneRef.indiceClient }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.nomAbonne">Nom Abonne</span></dt>
+          <dd>
+            <span>{{ abonneRef.nomAbonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.prenomAbonne">Prenom Abonne</span></dt>
+          <dd>
+            <span>{{ abonneRef.prenomAbonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.telephone">Telephone</span></dt>
+          <dd>
+            <span>{{ abonneRef.telephone }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.email">Email</span></dt>
+          <dd>
+            <span>{{ abonneRef.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.typePieceIdentite">Type Piece Identite</span></dt>
+          <dd>
+            <span [jhiTranslate]="'bankyApp.TypePieceIdentite.' + (abonneRef.typePieceIdentite ?? 'null')">{{
+              { null: '', CNI: 'CNI', PASSEPORT: 'PASSEPORT' }[abonneRef.typePieceIdentite ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.numPieceIdentite">Num Piece Identite</span></dt>
+          <dd>
+            <span>{{ abonneRef.numPieceIdentite }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.statut">Statut</span></dt>
+          <dd>
+            <span [jhiTranslate]="'bankyApp.StatutAbonne.' + (abonneRef.statut ?? 'null')">{{
+              {
+                null: '',
+                DESACTIVE: 'DESACTIVE',
+                EN_COURS_ACTIVATION: 'EN_COURS_ACTIVATION',
+                ACTIVE: 'ACTIVE',
+                SUSPENDU: 'SUSPENDU',
+                BLOQUE: 'BLOQUE',
+              }[abonneRef.statut ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.abonne.identifiant">Identifiant</span></dt>
+          <dd>
+            <span>{{ abonneRef.identifiant }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/abonne', abonneRef.idAbonne, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

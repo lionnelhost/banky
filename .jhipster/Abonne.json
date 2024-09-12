@@ -1,0 +1,74 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095027"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idAbonne",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "indiceClient",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomAbonne",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomAbonne",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typePieceIdentite",
+      "fieldType": "TypePieceIdentite",
+      "fieldValues": "CNI,PASSEPORT"
+    },
+    {
+      "fieldName": "numPieceIdentite",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "statut",
+      "fieldType": "StatutAbonne",
+      "fieldValues": "DESACTIVE,EN_COURS_ACTIVATION,ACTIVE,SUSPENDU,BLOQUE"
+    },
+    {
+      "fieldName": "identifiant",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Abonne",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "contratAbonnement",
+      "otherEntityRelationshipName": "abonne",
+      "relationshipName": "contratAbonnement",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "contratAbonnementCompte",
+      "otherEntityRelationshipName": "abonne",
+      "relationshipName": "contratAbonnementCompte",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

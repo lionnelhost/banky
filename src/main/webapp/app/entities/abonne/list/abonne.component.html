@@ -1,0 +1,182 @@
+<div>
+  <h2 id="page-heading" data-cy="AbonneHeading">
+    <span jhiTranslate="bankyApp.abonne.home.title">Abonnes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="bankyApp.abonne.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-abonne"
+        [routerLink]="['/abonne/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bankyApp.abonne.home.createLabel">Créer un nouveau Abonne</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (abonnes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bankyApp.abonne.home.notFound">Aucun Abonne trouvé</span>
+    </div>
+  }
+
+  @if (abonnes && abonnes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="idAbonne">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.idAbonne">Id Abonne</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="indiceClient">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.indiceClient">Indice Client</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nomAbonne">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.nomAbonne">Nom Abonne</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="prenomAbonne">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.prenomAbonne">Prenom Abonne</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="telephone">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.telephone">Telephone</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="typePieceIdentite">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.typePieceIdentite">Type Piece Identite</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="numPieceIdentite">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.numPieceIdentite">Num Piece Identite</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="statut">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.statut">Statut</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="identifiant">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.abonne.identifiant">Identifiant</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (abonne of abonnes; track trackIdAbonne) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/abonne', abonne.idAbonne, 'view']">{{ abonne.idAbonne }}</a>
+              </td>
+              <td>{{ abonne.indiceClient }}</td>
+              <td>{{ abonne.nomAbonne }}</td>
+              <td>{{ abonne.prenomAbonne }}</td>
+              <td>{{ abonne.telephone }}</td>
+              <td>{{ abonne.email }}</td>
+              <td [jhiTranslate]="'bankyApp.TypePieceIdentite.' + (abonne.typePieceIdentite ?? 'null')">
+                {{ { null: '', CNI: 'CNI', PASSEPORT: 'PASSEPORT' }[abonne.typePieceIdentite ?? 'null'] }}
+              </td>
+              <td>{{ abonne.numPieceIdentite }}</td>
+              <td [jhiTranslate]="'bankyApp.StatutAbonne.' + (abonne.statut ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    DESACTIVE: 'DESACTIVE',
+                    EN_COURS_ACTIVATION: 'EN_COURS_ACTIVATION',
+                    ACTIVE: 'ACTIVE',
+                    SUSPENDU: 'SUSPENDU',
+                    BLOQUE: 'BLOQUE',
+                  }[abonne.statut ?? 'null']
+                }}
+              </td>
+              <td>{{ abonne.identifiant }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/abonne', abonne.idAbonne, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a [routerLink]="['/abonne', abonne.idAbonne, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(abonne)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (abonnes && abonnes.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

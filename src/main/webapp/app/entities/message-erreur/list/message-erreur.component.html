@@ -1,0 +1,121 @@
+<div>
+  <h2 id="page-heading" data-cy="MessageErreurHeading">
+    <span jhiTranslate="bankyApp.messageErreur.home.title">MessageErreurs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="bankyApp.messageErreur.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-message-erreur"
+        [routerLink]="['/message-erreur/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bankyApp.messageErreur.home.createLabel">Créer un nouveau Message Erreur</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (messageErreurs?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bankyApp.messageErreur.home.notFound">Aucun Message Erreur trouvé</span>
+    </div>
+  }
+
+  @if (messageErreurs && messageErreurs.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="idMessageErreur">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.messageErreur.idMessageErreur">Id Message Erreur</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="codeErreur">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.messageErreur.codeErreur">Code Erreur</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="description">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.messageErreur.description">Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (messageErreur of messageErreurs; track trackIdMessageErreur) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/message-erreur', messageErreur.idMessageErreur, 'view']">{{ messageErreur.idMessageErreur }}</a>
+              </td>
+              <td>{{ messageErreur.codeErreur }}</td>
+              <td>{{ messageErreur.description }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/message-erreur', messageErreur.idMessageErreur, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/message-erreur', messageErreur.idMessageErreur, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(messageErreur)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (messageErreurs && messageErreurs.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

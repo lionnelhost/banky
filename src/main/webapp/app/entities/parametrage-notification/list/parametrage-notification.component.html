@@ -1,0 +1,136 @@
+<div>
+  <h2 id="page-heading" data-cy="ParametrageNotificationHeading">
+    <span jhiTranslate="bankyApp.parametrageNotification.home.title">ParametrageNotifications</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="bankyApp.parametrageNotification.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-parametrage-notification"
+        [routerLink]="['/parametrage-notification/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bankyApp.parametrageNotification.home.createLabel">Créer un nouveau Parametrage Notification</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (parametrageNotifications?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bankyApp.parametrageNotification.home.notFound">Aucun Parametrage Notification trouvé</span>
+    </div>
+  }
+
+  @if (parametrageNotifications && parametrageNotifications.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="idParamNotif">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.parametrageNotification.idParamNotif">Id Param Notif</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="objetNotif">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.parametrageNotification.objetNotif">Objet Notif</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="typeNotif">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.parametrageNotification.typeNotif">Type Notif</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contenu">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.parametrageNotification.contenu">Contenu</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (parametrageNotification of parametrageNotifications; track trackIdParamNotif) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/parametrage-notification', parametrageNotification.idParamNotif, 'view']">{{
+                  parametrageNotification.idParamNotif
+                }}</a>
+              </td>
+              <td>{{ parametrageNotification.objetNotif }}</td>
+              <td>{{ parametrageNotification.typeNotif }}</td>
+              <td>{{ parametrageNotification.contenu }}</td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/parametrage-notification', parametrageNotification.idParamNotif, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/parametrage-notification', parametrageNotification.idParamNotif, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button
+                    type="submit"
+                    (click)="delete(parametrageNotification)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (parametrageNotifications && parametrageNotifications.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

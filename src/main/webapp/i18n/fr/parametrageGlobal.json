@@ -1,0 +1,26 @@
+{
+  "bankyApp": {
+    "parametrageGlobal": {
+      "home": {
+        "title": "ParametrageGlobals",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Parametrage Global",
+        "createOrEditLabel": "Créer ou éditer un Parametrage Global",
+        "notFound": "Aucun Parametrage Global trouvé"
+      },
+      "created": "Un nouveau Parametrage Global a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Parametrage Global avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Parametrage Global avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Parametrage Global {{ id }} ?"
+      },
+      "detail": {
+        "title": "Parametrage Global"
+      },
+      "idParamGlobal": "Id Param Global",
+      "codeParam": "Code Param",
+      "typeParam": "Type Param",
+      "valeur": "Valeur"
+    }
+  }
+}

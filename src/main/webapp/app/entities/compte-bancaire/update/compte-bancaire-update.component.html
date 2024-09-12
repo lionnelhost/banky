@@ -1,0 +1,114 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-compte-bancaire-heading"
+        data-cy="CompteBancaireCreateUpdateHeading"
+        jhiTranslate="bankyApp.compteBancaire.home.createOrEditLabel"
+      >
+        Créer ou éditer un Compte Bancaire
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idCompteBancaire" jhiTranslate="bankyApp.compteBancaire.idCompteBancaire"
+            >Id Compte Bancaire</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="idCompteBancaire"
+            id="field_idCompteBancaire"
+            data-cy="idCompteBancaire"
+            formControlName="idCompteBancaire"
+            [readonly]="editForm.get('idCompteBancaire')!.disabled"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_age" jhiTranslate="bankyApp.compteBancaire.age">Age</label>
+          <input type="text" class="form-control" name="age" id="field_age" data-cy="age" formControlName="age" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_ncp" jhiTranslate="bankyApp.compteBancaire.ncp">Ncp</label>
+          <input type="text" class="form-control" name="ncp" id="field_ncp" data-cy="ncp" formControlName="ncp" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sde" jhiTranslate="bankyApp.compteBancaire.sde">Sde</label>
+          <input type="text" class="form-control" name="sde" id="field_sde" data-cy="sde" formControlName="sde" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sin" jhiTranslate="bankyApp.compteBancaire.sin">Sin</label>
+          <input type="text" class="form-control" name="sin" id="field_sin" data-cy="sin" formControlName="sin" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_soldeDisponible" jhiTranslate="bankyApp.compteBancaire.soldeDisponible"
+            >Solde Disponible</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="soldeDisponible"
+            id="field_soldeDisponible"
+            data-cy="soldeDisponible"
+            formControlName="soldeDisponible"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_rib" jhiTranslate="bankyApp.compteBancaire.rib">Rib</label>
+          <input type="text" class="form-control" name="rib" id="field_rib" data-cy="rib" formControlName="rib" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="bankyApp.compteBancaire.status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'bankyApp.StatutCompteBancaire.null' | translate }}</option>
+            @for (statutCompteBancaire of statutCompteBancaireValues; track $index) {
+              <option [value]="statutCompteBancaire">{{ 'bankyApp.StatutCompteBancaire.' + statutCompteBancaire | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contrat" jhiTranslate="bankyApp.compteBancaire.contrat">Contrat</label>
+          <select
+            class="form-control"
+            id="field_contrat"
+            data-cy="contrat"
+            name="contrat"
+            formControlName="contrat"
+            [compareWith]="compareContrat"
+          >
+            <option [ngValue]="null"></option>
+            @for (contratOption of contratsSharedCollection; track $index) {
+              <option [ngValue]="contratOption">{{ contratOption.idContrat }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

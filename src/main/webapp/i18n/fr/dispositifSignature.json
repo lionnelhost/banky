@@ -1,0 +1,25 @@
+{
+  "bankyApp": {
+    "dispositifSignature": {
+      "home": {
+        "title": "DispositifSignatures",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Dispositif Signature",
+        "createOrEditLabel": "Créer ou éditer un Dispositif Signature",
+        "notFound": "Aucun Dispositif Signature trouvé"
+      },
+      "created": "Un nouveau Dispositif Signature a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Dispositif Signature avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Dispositif Signature avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Dispositif Signature {{ id }} ?"
+      },
+      "detail": {
+        "title": "Dispositif Signature"
+      },
+      "idDispositif": "Id Dispositif",
+      "libelle": "Libelle",
+      "dispositifSercurite": "Dispositif Sercurite"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (messageErreur(); as messageErreurRef) {
+      <div>
+        <h2 data-cy="messageErreurDetailsHeading"><span jhiTranslate="bankyApp.messageErreur.detail.title">Message Erreur</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.messageErreur.idMessageErreur">Id Message Erreur</span></dt>
+          <dd>
+            <span>{{ messageErreurRef.idMessageErreur }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.messageErreur.codeErreur">Code Erreur</span></dt>
+          <dd>
+            <span>{{ messageErreurRef.codeErreur }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.messageErreur.description">Description</span></dt>
+          <dd>
+            <span>{{ messageErreurRef.description }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/message-erreur', messageErreurRef.idMessageErreur, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

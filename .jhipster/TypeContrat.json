@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095044"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idTypeContrat",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "name": "TypeContrat",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "contrat",
+      "otherEntityRelationshipName": "typeContrat",
+      "relationshipName": "contrat",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

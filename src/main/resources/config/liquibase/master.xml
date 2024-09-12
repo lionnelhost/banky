@@ -11,7 +11,34 @@
     <property name="datetimeType" value="datetime" dbms="oracle"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095027_added_entity_Abonne.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095028_added_entity_Agence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095029_added_entity_Banque.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095030_added_entity_Canal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095031_added_entity_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095032_added_entity_CompteBancaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095033_added_entity_Contrat.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095034_added_entity_ContratAbonnement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095035_added_entity_ContratAbonnementCompte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095036_added_entity_DispositifSercurite.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095037_added_entity_DispositifSignature.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095038_added_entity_JourFerier.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095039_added_entity_MessageErreur.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095040_added_entity_ParametrageGlobal.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095041_added_entity_ParametrageNotification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095042_added_entity_Participant.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095043_added_entity_TypeClient.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095044_added_entity_TypeContrat.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095045_added_entity_TypeTransaction.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095046_added_entity_VariableNotification.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20240912095028_added_entity_constraints_Agence.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095031_added_entity_constraints_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095032_added_entity_constraints_CompteBancaire.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095033_added_entity_constraints_Contrat.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095034_added_entity_constraints_ContratAbonnement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095035_added_entity_constraints_ContratAbonnementCompte.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240912095036_added_entity_constraints_DispositifSercurite.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

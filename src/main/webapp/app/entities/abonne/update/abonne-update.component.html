@@ -1,0 +1,133 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-abonne-heading" data-cy="AbonneCreateUpdateHeading" jhiTranslate="bankyApp.abonne.home.createOrEditLabel">
+        Créer ou éditer un Abonne
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idAbonne" jhiTranslate="bankyApp.abonne.idAbonne">Id Abonne</label>
+          <input
+            type="text"
+            class="form-control"
+            name="idAbonne"
+            id="field_idAbonne"
+            data-cy="idAbonne"
+            formControlName="idAbonne"
+            [readonly]="editForm.get('idAbonne')!.disabled"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_indiceClient" jhiTranslate="bankyApp.abonne.indiceClient">Indice Client</label>
+          <input
+            type="text"
+            class="form-control"
+            name="indiceClient"
+            id="field_indiceClient"
+            data-cy="indiceClient"
+            formControlName="indiceClient"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nomAbonne" jhiTranslate="bankyApp.abonne.nomAbonne">Nom Abonne</label>
+          <input type="text" class="form-control" name="nomAbonne" id="field_nomAbonne" data-cy="nomAbonne" formControlName="nomAbonne" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_prenomAbonne" jhiTranslate="bankyApp.abonne.prenomAbonne">Prenom Abonne</label>
+          <input
+            type="text"
+            class="form-control"
+            name="prenomAbonne"
+            id="field_prenomAbonne"
+            data-cy="prenomAbonne"
+            formControlName="prenomAbonne"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telephone" jhiTranslate="bankyApp.abonne.telephone">Telephone</label>
+          <input type="text" class="form-control" name="telephone" id="field_telephone" data-cy="telephone" formControlName="telephone" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" jhiTranslate="bankyApp.abonne.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_typePieceIdentite" jhiTranslate="bankyApp.abonne.typePieceIdentite"
+            >Type Piece Identite</label
+          >
+          <select
+            class="form-control"
+            name="typePieceIdentite"
+            formControlName="typePieceIdentite"
+            id="field_typePieceIdentite"
+            data-cy="typePieceIdentite"
+          >
+            <option [ngValue]="null">{{ 'bankyApp.TypePieceIdentite.null' | translate }}</option>
+            @for (typePieceIdentite of typePieceIdentiteValues; track $index) {
+              <option [value]="typePieceIdentite">{{ 'bankyApp.TypePieceIdentite.' + typePieceIdentite | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_numPieceIdentite" jhiTranslate="bankyApp.abonne.numPieceIdentite">Num Piece Identite</label>
+          <input
+            type="text"
+            class="form-control"
+            name="numPieceIdentite"
+            id="field_numPieceIdentite"
+            data-cy="numPieceIdentite"
+            formControlName="numPieceIdentite"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_statut" jhiTranslate="bankyApp.abonne.statut">Statut</label>
+          <select class="form-control" name="statut" formControlName="statut" id="field_statut" data-cy="statut">
+            <option [ngValue]="null">{{ 'bankyApp.StatutAbonne.null' | translate }}</option>
+            @for (statutAbonne of statutAbonneValues; track $index) {
+              <option [value]="statutAbonne">{{ 'bankyApp.StatutAbonne.' + statutAbonne | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_identifiant" jhiTranslate="bankyApp.abonne.identifiant">Identifiant</label>
+          <input
+            type="text"
+            class="form-control"
+            name="identifiant"
+            id="field_identifiant"
+            data-cy="identifiant"
+            formControlName="identifiant"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

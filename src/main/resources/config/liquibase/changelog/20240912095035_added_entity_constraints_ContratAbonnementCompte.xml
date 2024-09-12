@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity ContratAbonnementCompte.
+    -->
+    <changeSet id="20240912095035-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="contrat_id_contrat"
+                                 baseTableName="contrat_abonnement_compte"
+                                 constraintName="fk_contrat_abonnement_compte__contrat_id"
+                                 referencedColumnNames="id_contrat"
+                                 referencedTableName="contrat"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="abonne_id_abonne"
+                                 baseTableName="contrat_abonnement_compte"
+                                 constraintName="fk_contrat_abonnement_compte__abonne_id"
+                                 referencedColumnNames="id_abonne"
+                                 referencedTableName="abonne"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="compte_bancaire_id_compte_bancaire"
+                                 baseTableName="contrat_abonnement_compte"
+                                 constraintName="fk_contrat_abonnement_compte__compte_bancaire_id"
+                                 referencedColumnNames="id_compte_bancaire"
+                                 referencedTableName="compte_bancaire"
+                                 />
+    </changeSet>
+</databaseChangeLog>

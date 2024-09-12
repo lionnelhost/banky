@@ -1,0 +1,11 @@
+export enum StatutAbonne {
+  DESACTIVE = 'DESACTIVE',
+
+  EN_COURS_ACTIVATION = 'EN_COURS_ACTIVATION',
+
+  ACTIVE = 'ACTIVE',
+
+  SUSPENDU = 'SUSPENDU',
+
+  BLOQUE = 'BLOQUE',
+}

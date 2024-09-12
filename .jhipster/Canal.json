@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095030"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idCanal",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Canal",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "dispositifSercurite",
+      "otherEntityRelationshipName": "canal",
+      "relationshipName": "dispositifSercurite",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

@@ -1,0 +1,26 @@
+{
+  "bankyApp": {
+    "parametrageNotification": {
+      "home": {
+        "title": "ParametrageNotifications",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Parametrage Notification",
+        "createOrEditLabel": "Créer ou éditer un Parametrage Notification",
+        "notFound": "Aucun Parametrage Notification trouvé"
+      },
+      "created": "Un nouveau Parametrage Notification a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Parametrage Notification avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Parametrage Notification avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Parametrage Notification {{ id }} ?"
+      },
+      "detail": {
+        "title": "Parametrage Notification"
+      },
+      "idParamNotif": "Id Param Notif",
+      "objetNotif": "Objet Notif",
+      "typeNotif": "Type Notif",
+      "contenu": "Contenu"
+    }
+  }
+}

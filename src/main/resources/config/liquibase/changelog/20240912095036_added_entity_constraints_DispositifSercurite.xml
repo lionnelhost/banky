@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity DispositifSercurite.
+    -->
+    <changeSet id="20240912095036-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="canal_id_canal"
+                                 baseTableName="dispositif_sercurite"
+                                 constraintName="fk_dispositif_sercurite__canal_id"
+                                 referencedColumnNames="id_canal"
+                                 referencedTableName="canal"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="type_transaction_id_type_transaction"
+                                 baseTableName="dispositif_sercurite"
+                                 constraintName="fk_dispositif_sercurite__type_transaction_id"
+                                 referencedColumnNames="id_type_transaction"
+                                 referencedTableName="type_transaction"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="dispositif_signature_id_dispositif"
+                                 baseTableName="dispositif_sercurite"
+                                 constraintName="fk_dispositif_sercurite__dispositif_signature_id"
+                                 referencedColumnNames="id_dispositif"
+                                 referencedTableName="dispositif_signature"
+                                 />
+    </changeSet>
+</databaseChangeLog>

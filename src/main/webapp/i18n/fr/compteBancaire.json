@@ -1,0 +1,32 @@
+{
+  "bankyApp": {
+    "compteBancaire": {
+      "home": {
+        "title": "CompteBancaires",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Compte Bancaire",
+        "createOrEditLabel": "Créer ou éditer un Compte Bancaire",
+        "notFound": "Aucun Compte Bancaire trouvé"
+      },
+      "created": "Un nouveau Compte Bancaire a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Compte Bancaire avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Compte Bancaire avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Compte Bancaire {{ id }} ?"
+      },
+      "detail": {
+        "title": "Compte Bancaire"
+      },
+      "idCompteBancaire": "Id Compte Bancaire",
+      "age": "Age",
+      "ncp": "Ncp",
+      "sde": "Sde",
+      "sin": "Sin",
+      "soldeDisponible": "Solde Disponible",
+      "rib": "Rib",
+      "status": "Status",
+      "contrat": "Contrat",
+      "contratAbonnementCompte": "Contrat Abonnement Compte"
+    }
+  }
+}

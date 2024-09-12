@@ -1,0 +1,48 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095035"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idContrat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idAbonne",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idCompteBancaire",
+      "fieldType": "String"
+    }
+  ],
+  "name": "ContratAbonnementCompte",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "contrat",
+      "otherEntityRelationshipName": "contratAbonnementCompte",
+      "relationshipName": "contrat",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "abonne",
+      "otherEntityRelationshipName": "contratAbonnementCompte",
+      "relationshipName": "abonne",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "compteBancaire",
+      "otherEntityRelationshipName": "contratAbonnementCompte",
+      "relationshipName": "compteBancaire",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

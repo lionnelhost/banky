@@ -1,0 +1,60 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095031"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idClient",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "indiceClient",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomClient",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "prenomClient",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "raisonSociale",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telephone",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Client",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "contrat",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "contrat",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "typeClient",
+      "otherEntityRelationshipName": "client",
+      "relationshipName": "typeClient",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

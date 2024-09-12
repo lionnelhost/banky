@@ -1,0 +1,10 @@
+{
+  "bankyApp": {
+    "StatutCompteBancaire": {
+      "null": "",
+      "ACTIF": "ACTIF",
+      "INACTIF": "INACTIF",
+      "SUSPENDU": "SUSPENDU"
+    }
+  }
+}

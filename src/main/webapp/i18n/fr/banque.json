@@ -1,0 +1,35 @@
+{
+  "bankyApp": {
+    "banque": {
+      "home": {
+        "title": "Banques",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Banque",
+        "createOrEditLabel": "Créer ou éditer un Banque",
+        "notFound": "Aucun Banque trouvé"
+      },
+      "created": "Un nouveau Banque a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Banque avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Banque avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Banque {{ id }} ?"
+      },
+      "detail": {
+        "title": "Banque"
+      },
+      "idBanque": "Id Banque",
+      "code": "Code",
+      "devise": "Devise",
+      "langue": "Langue",
+      "logo": "Logo",
+      "codeSwift": "Code Swift",
+      "codeIban": "Code Iban",
+      "codePays": "Code Pays",
+      "fuseauHoraire": "Fuseau Horaire",
+      "cutOffTime": "Cut Off Time",
+      "codeParticipant": "Code Participant",
+      "libelleParticipant": "Libelle Participant",
+      "agence": "Agence"
+    }
+  }
+}

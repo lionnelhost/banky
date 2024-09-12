@@ -1,0 +1,25 @@
+{
+  "bankyApp": {
+    "typeTransaction": {
+      "home": {
+        "title": "TypeTransactions",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Type Transaction",
+        "createOrEditLabel": "Créer ou éditer un Type Transaction",
+        "notFound": "Aucun Type Transaction trouvé"
+      },
+      "created": "Un nouveau Type Transaction a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Type Transaction avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Type Transaction avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Type Transaction {{ id }} ?"
+      },
+      "detail": {
+        "title": "Type Transaction"
+      },
+      "idTypeTransaction": "Id Type Transaction",
+      "libelle": "Libelle",
+      "dispositifSercurite": "Dispositif Sercurite"
+    }
+  }
+}

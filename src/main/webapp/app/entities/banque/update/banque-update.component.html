@@ -1,0 +1,137 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-banque-heading" data-cy="BanqueCreateUpdateHeading" jhiTranslate="bankyApp.banque.home.createOrEditLabel">
+        Créer ou éditer un Banque
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idBanque" jhiTranslate="bankyApp.banque.idBanque">Id Banque</label>
+          <input
+            type="text"
+            class="form-control"
+            name="idBanque"
+            id="field_idBanque"
+            data-cy="idBanque"
+            formControlName="idBanque"
+            [readonly]="editForm.get('idBanque')!.disabled"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_code" jhiTranslate="bankyApp.banque.code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_devise" jhiTranslate="bankyApp.banque.devise">Devise</label>
+          <select class="form-control" name="devise" formControlName="devise" id="field_devise" data-cy="devise">
+            <option [ngValue]="null">{{ 'bankyApp.Devise.null' | translate }}</option>
+            @for (devise of deviseValues; track $index) {
+              <option [value]="devise">{{ 'bankyApp.Devise.' + devise | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_langue" jhiTranslate="bankyApp.banque.langue">Langue</label>
+          <select class="form-control" name="langue" formControlName="langue" id="field_langue" data-cy="langue">
+            <option [ngValue]="null">{{ 'bankyApp.Langue.null' | translate }}</option>
+            @for (langue of langueValues; track $index) {
+              <option [value]="langue">{{ 'bankyApp.Langue.' + langue | translate }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_logo" jhiTranslate="bankyApp.banque.logo">Logo</label>
+          <input type="text" class="form-control" name="logo" id="field_logo" data-cy="logo" formControlName="logo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeSwift" jhiTranslate="bankyApp.banque.codeSwift">Code Swift</label>
+          <input type="text" class="form-control" name="codeSwift" id="field_codeSwift" data-cy="codeSwift" formControlName="codeSwift" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeIban" jhiTranslate="bankyApp.banque.codeIban">Code Iban</label>
+          <input type="text" class="form-control" name="codeIban" id="field_codeIban" data-cy="codeIban" formControlName="codeIban" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codePays" jhiTranslate="bankyApp.banque.codePays">Code Pays</label>
+          <input type="text" class="form-control" name="codePays" id="field_codePays" data-cy="codePays" formControlName="codePays" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fuseauHoraire" jhiTranslate="bankyApp.banque.fuseauHoraire">Fuseau Horaire</label>
+          <input
+            type="text"
+            class="form-control"
+            name="fuseauHoraire"
+            id="field_fuseauHoraire"
+            data-cy="fuseauHoraire"
+            formControlName="fuseauHoraire"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_cutOffTime" jhiTranslate="bankyApp.banque.cutOffTime">Cut Off Time</label>
+          <input
+            type="text"
+            class="form-control"
+            name="cutOffTime"
+            id="field_cutOffTime"
+            data-cy="cutOffTime"
+            formControlName="cutOffTime"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeParticipant" jhiTranslate="bankyApp.banque.codeParticipant">Code Participant</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeParticipant"
+            id="field_codeParticipant"
+            data-cy="codeParticipant"
+            formControlName="codeParticipant"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_libelleParticipant" jhiTranslate="bankyApp.banque.libelleParticipant"
+            >Libelle Participant</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="libelleParticipant"
+            id="field_libelleParticipant"
+            data-cy="libelleParticipant"
+            formControlName="libelleParticipant"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

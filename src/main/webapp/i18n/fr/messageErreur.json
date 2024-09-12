@@ -1,0 +1,25 @@
+{
+  "bankyApp": {
+    "messageErreur": {
+      "home": {
+        "title": "MessageErreurs",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Message Erreur",
+        "createOrEditLabel": "Créer ou éditer un Message Erreur",
+        "notFound": "Aucun Message Erreur trouvé"
+      },
+      "created": "Un nouveau Message Erreur a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Message Erreur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Message Erreur avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Message Erreur {{ id }} ?"
+      },
+      "detail": {
+        "title": "Message Erreur"
+      },
+      "idMessageErreur": "Id Message Erreur",
+      "codeErreur": "Code Erreur",
+      "description": "Description"
+    }
+  }
+}

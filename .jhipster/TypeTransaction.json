@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095045"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idTypeTransaction",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "name": "TypeTransaction",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "dispositifSercurite",
+      "otherEntityRelationshipName": "typeTransaction",
+      "relationshipName": "dispositifSercurite",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

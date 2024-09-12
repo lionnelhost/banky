@@ -1,0 +1,176 @@
+<div>
+  <h2 id="page-heading" data-cy="CompteBancaireHeading">
+    <span jhiTranslate="bankyApp.compteBancaire.home.title">CompteBancaires</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="bankyApp.compteBancaire.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-compte-bancaire"
+        [routerLink]="['/compte-bancaire/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bankyApp.compteBancaire.home.createLabel">Créer un nouveau Compte Bancaire</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (compteBancaires?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bankyApp.compteBancaire.home.notFound">Aucun Compte Bancaire trouvé</span>
+    </div>
+  }
+
+  @if (compteBancaires && compteBancaires.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="idCompteBancaire">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.idCompteBancaire">Id Compte Bancaire</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="age">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.age">Age</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ncp">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.ncp">Ncp</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sde">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.sde">Sde</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sin">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.sin">Sin</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="soldeDisponible">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.soldeDisponible">Solde Disponible</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="rib">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.rib">Rib</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="status">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.status">Status</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contrat.idContrat">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.compteBancaire.contrat">Contrat</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (compteBancaire of compteBancaires; track trackIdCompteBancaire) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/compte-bancaire', compteBancaire.idCompteBancaire, 'view']">{{ compteBancaire.idCompteBancaire }}</a>
+              </td>
+              <td>{{ compteBancaire.age }}</td>
+              <td>{{ compteBancaire.ncp }}</td>
+              <td>{{ compteBancaire.sde }}</td>
+              <td>{{ compteBancaire.sin }}</td>
+              <td>{{ compteBancaire.soldeDisponible }}</td>
+              <td>{{ compteBancaire.rib }}</td>
+              <td [jhiTranslate]="'bankyApp.StatutCompteBancaire.' + (compteBancaire.status ?? 'null')">
+                {{ { null: '', ACTIF: 'ACTIF', INACTIF: 'INACTIF', SUSPENDU: 'SUSPENDU' }[compteBancaire.status ?? 'null'] }}
+              </td>
+              <td>
+                @if (compteBancaire.contrat) {
+                  <div>
+                    <a [routerLink]="['/contrat', compteBancaire.contrat.idContrat, 'view']">{{ compteBancaire.contrat.idContrat }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/compte-bancaire', compteBancaire.idCompteBancaire, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/compte-bancaire', compteBancaire.idCompteBancaire, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(compteBancaire)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (compteBancaires && compteBancaires.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

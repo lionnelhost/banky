@@ -1,0 +1,30 @@
+@if (contratAbonnementCompte) {
+  <form name="deleteForm" (ngSubmit)="confirmDelete(contratAbonnementCompte.id!)">
+    <div class="modal-header">
+      <h4 class="modal-title" data-cy="contratAbonnementCompteDeleteDialogHeading" jhiTranslate="entity.delete.title">
+        Confirmation de suppression
+      </h4>
+    </div>
+
+    <div class="modal-body">
+      <jhi-alert-error></jhi-alert-error>
+      <p
+        id="jhi-delete-contratAbonnementCompte-heading"
+        jhiTranslate="bankyApp.contratAbonnementCompte.delete.question"
+        [translateValues]="{ id: contratAbonnementCompte.id }"
+      >
+        Êtes-vous certain de vouloir supprimer le Contrat Abonnement Compte {{ contratAbonnementCompte.id }} ?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+        <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+      </button>
+
+      <button id="jhi-confirm-delete-contratAbonnementCompte" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+        <fa-icon icon="times"></fa-icon>&nbsp;<span jhiTranslate="entity.action.delete">Supprimer</span>
+      </button>
+    </div>
+  </form>
+}

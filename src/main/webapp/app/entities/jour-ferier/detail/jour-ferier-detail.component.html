@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (jourFerier(); as jourFerierRef) {
+      <div>
+        <h2 data-cy="jourFerierDetailsHeading"><span jhiTranslate="bankyApp.jourFerier.detail.title">Jour Ferier</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.jourFerier.idJourFerie">Id Jour Ferie</span></dt>
+          <dd>
+            <span>{{ jourFerierRef.idJourFerie }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.jourFerier.libelle">Libelle</span></dt>
+          <dd>
+            <span>{{ jourFerierRef.libelle }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/jour-ferier', jourFerierRef.idJourFerie, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

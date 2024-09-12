@@ -1,0 +1,179 @@
+<div>
+  <h2 id="page-heading" data-cy="ContratAbonnementCompteHeading">
+    <span jhiTranslate="bankyApp.contratAbonnementCompte.home.title">ContratAbonnementComptes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="bankyApp.contratAbonnementCompte.home.refreshListLabel">Actualiser la liste</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-contrat-abonnement-compte"
+        [routerLink]="['/contrat-abonnement-compte/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="bankyApp.contratAbonnementCompte.home.createLabel">Créer un nouveau Contrat Abonnement Compte</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (contratAbonnementComptes?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="bankyApp.contratAbonnementCompte.home.notFound">Aucun Contrat Abonnement Compte trouvé</span>
+    </div>
+  }
+
+  @if (contratAbonnementComptes && contratAbonnementComptes.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="idContrat">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.contratAbonnementCompte.idContrat">Id Contrat</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="idAbonne">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.contratAbonnementCompte.idAbonne">Id Abonne</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="idCompteBancaire">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.contratAbonnementCompte.idCompteBancaire">Id Compte Bancaire</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contrat.idContrat">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.contratAbonnementCompte.contrat">Contrat</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="abonne.idAbonne">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.contratAbonnementCompte.abonne">Abonne</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="compteBancaire.idCompteBancaire">
+              <div class="d-flex">
+                <span jhiTranslate="bankyApp.contratAbonnementCompte.compteBancaire">Compte Bancaire</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (contratAbonnementCompte of contratAbonnementComptes; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/contrat-abonnement-compte', contratAbonnementCompte.id, 'view']">{{ contratAbonnementCompte.id }}</a>
+              </td>
+              <td>{{ contratAbonnementCompte.idContrat }}</td>
+              <td>{{ contratAbonnementCompte.idAbonne }}</td>
+              <td>{{ contratAbonnementCompte.idCompteBancaire }}</td>
+              <td>
+                @if (contratAbonnementCompte.contrat) {
+                  <div>
+                    <a [routerLink]="['/contrat', contratAbonnementCompte.contrat.idContrat, 'view']">{{
+                      contratAbonnementCompte.contrat.idContrat
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (contratAbonnementCompte.abonne) {
+                  <div>
+                    <a [routerLink]="['/abonne', contratAbonnementCompte.abonne.idAbonne, 'view']">{{
+                      contratAbonnementCompte.abonne.idAbonne
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td>
+                @if (contratAbonnementCompte.compteBancaire) {
+                  <div>
+                    <a [routerLink]="['/compte-bancaire', contratAbonnementCompte.compteBancaire.idCompteBancaire, 'view']">{{
+                      contratAbonnementCompte.compteBancaire.idCompteBancaire
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/contrat-abonnement-compte', contratAbonnementCompte.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">Voir</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/contrat-abonnement-compte', contratAbonnementCompte.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Editer</span>
+                  </a>
+
+                  <button
+                    type="submit"
+                    (click)="delete(contratAbonnementCompte)"
+                    class="btn btn-danger btn-sm"
+                    data-cy="entityDeleteButton"
+                  >
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Supprimer</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (contratAbonnementComptes && contratAbonnementComptes.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

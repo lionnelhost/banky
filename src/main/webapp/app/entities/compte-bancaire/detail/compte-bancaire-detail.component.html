@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (compteBancaire(); as compteBancaireRef) {
+      <div>
+        <h2 data-cy="compteBancaireDetailsHeading"><span jhiTranslate="bankyApp.compteBancaire.detail.title">Compte Bancaire</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.compteBancaire.idCompteBancaire">Id Compte Bancaire</span></dt>
+          <dd>
+            <span>{{ compteBancaireRef.idCompteBancaire }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.age">Age</span></dt>
+          <dd>
+            <span>{{ compteBancaireRef.age }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.ncp">Ncp</span></dt>
+          <dd>
+            <span>{{ compteBancaireRef.ncp }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.sde">Sde</span></dt>
+          <dd>
+            <span>{{ compteBancaireRef.sde }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.sin">Sin</span></dt>
+          <dd>
+            <span>{{ compteBancaireRef.sin }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.soldeDisponible">Solde Disponible</span></dt>
+          <dd>
+            <span>{{ compteBancaireRef.soldeDisponible }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.rib">Rib</span></dt>
+          <dd>
+            <span>{{ compteBancaireRef.rib }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'bankyApp.StatutCompteBancaire.' + (compteBancaireRef.status ?? 'null')">{{
+              { null: '', ACTIF: 'ACTIF', INACTIF: 'INACTIF', SUSPENDU: 'SUSPENDU' }[compteBancaireRef.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.compteBancaire.contrat">Contrat</span></dt>
+          <dd>
+            @if (compteBancaire()!.contrat) {
+              <div>
+                <a [routerLink]="['/contrat', compteBancaire()!.contrat?.idContrat, 'view']">{{ compteBancaireRef.contrat?.idContrat }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/compte-bancaire', compteBancaireRef.idCompteBancaire, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

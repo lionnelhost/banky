@@ -1,0 +1,75 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095029"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idBanque",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "devise",
+      "fieldType": "Devise",
+      "fieldValues": "XOF,XAF,EUR,USD"
+    },
+    {
+      "fieldName": "langue",
+      "fieldType": "Langue",
+      "fieldValues": "FR,EN"
+    },
+    {
+      "fieldName": "logo",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeSwift",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeIban",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codePays",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fuseauHoraire",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "cutOffTime",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeParticipant",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libelleParticipant",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Banque",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "agence",
+      "otherEntityRelationshipName": "banque",
+      "relationshipName": "agence",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

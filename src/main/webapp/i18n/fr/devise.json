@@ -1,0 +1,11 @@
+{
+  "bankyApp": {
+    "Devise": {
+      "null": "",
+      "XOF": "XOF",
+      "XAF": "XAF",
+      "EUR": "EUR",
+      "USD": "USD"
+    }
+  }
+}

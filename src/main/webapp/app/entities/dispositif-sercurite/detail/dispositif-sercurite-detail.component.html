@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (dispositifSercurite(); as dispositifSercuriteRef) {
+      <div>
+        <h2 data-cy="dispositifSercuriteDetailsHeading">
+          <span jhiTranslate="bankyApp.dispositifSercurite.detail.title">Dispositif Sercurite</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ dispositifSercuriteRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.dispositifSercurite.idCanal">Id Canal</span></dt>
+          <dd>
+            <span>{{ dispositifSercuriteRef.idCanal }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.dispositifSercurite.idTypeTransaction">Id Type Transaction</span></dt>
+          <dd>
+            <span>{{ dispositifSercuriteRef.idTypeTransaction }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.dispositifSercurite.idDispositif">Id Dispositif</span></dt>
+          <dd>
+            <span>{{ dispositifSercuriteRef.idDispositif }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.dispositifSercurite.canal">Canal</span></dt>
+          <dd>
+            @if (dispositifSercurite()!.canal) {
+              <div>
+                <a [routerLink]="['/canal', dispositifSercurite()!.canal?.idCanal, 'view']">{{ dispositifSercuriteRef.canal?.idCanal }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bankyApp.dispositifSercurite.typeTransaction">Type Transaction</span></dt>
+          <dd>
+            @if (dispositifSercurite()!.typeTransaction) {
+              <div>
+                <a [routerLink]="['/type-transaction', dispositifSercurite()!.typeTransaction?.idTypeTransaction, 'view']">{{
+                  dispositifSercuriteRef.typeTransaction?.idTypeTransaction
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bankyApp.dispositifSercurite.dispositifSignature">Dispositif Signature</span></dt>
+          <dd>
+            @if (dispositifSercurite()!.dispositifSignature) {
+              <div>
+                <a [routerLink]="['/dispositif-signature', dispositifSercurite()!.dispositifSignature?.idDispositif, 'view']">{{
+                  dispositifSercuriteRef.dispositifSignature?.idDispositif
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/dispositif-sercurite', dispositifSercuriteRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,29 @@
+{
+  "bankyApp": {
+    "contratAbonnementCompte": {
+      "home": {
+        "title": "ContratAbonnementComptes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Contrat Abonnement Compte",
+        "createOrEditLabel": "Créer ou éditer un Contrat Abonnement Compte",
+        "notFound": "Aucun Contrat Abonnement Compte trouvé"
+      },
+      "created": "Un nouveau Contrat Abonnement Compte a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Contrat Abonnement Compte avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Contrat Abonnement Compte avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Contrat Abonnement Compte {{ id }} ?"
+      },
+      "detail": {
+        "title": "Contrat Abonnement Compte"
+      },
+      "id": "ID",
+      "idContrat": "Id Contrat",
+      "idAbonne": "Id Abonne",
+      "idCompteBancaire": "Id Compte Bancaire",
+      "contrat": "Contrat",
+      "abonne": "Abonne",
+      "compteBancaire": "Compte Bancaire"
+    }
+  }
+}

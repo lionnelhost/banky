@@ -1,0 +1,215 @@
+entity TypeClient {
+	@Id idTypeClient String,
+    libelle String
+}
+
+entity Client {
+	@Id idClient String,
+    indiceClient String,
+    nomClient String,
+    prenomClient String,
+    raisonSociale String,
+    telephone String,
+    email String
+
+}
+
+entity Contrat {
+	@Id idContrat String,
+    dateValidite Instant
+}
+
+entity TypeContrat {
+	@Id idTypeContrat String,
+    libelle String
+}
+
+entity Abonne {
+	@Id idAbonne String,
+    indiceClient String,
+    nomAbonne String,
+    prenomAbonne String,
+    telephone String,
+    email String,
+    typePieceIdentite TypePieceIdentite,
+    numPieceIdentite String,
+    statut StatutAbonne,
+    identifiant String
+
+}
+
+entity CompteBancaire {
+	@Id idCompteBancaire String,
+    age String,
+    ncp String,
+    sde String,
+    sin String,
+    soldeDisponible String,
+    rib String,
+    status StatutCompteBancaire
+}
+
+entity ContratAbonnement {
+	idContrat String,
+  idAbonne String
+}
+
+entity ContratAbonnementCompte {
+	idContrat String,
+  idAbonne String,
+  idCompteBancaire String
+}
+
+entity JourFerier {
+	@Id idJourFerie String,
+    libelle String
+}
+
+entity MessageErreur {
+	@Id idMessageErreur String,
+    codeErreur String,
+    description String
+}
+
+entity TypeTransaction {
+	@Id idTypeTransaction String,
+    libelle String
+}
+
+entity Canal {
+	@Id idCanal String,
+    libelle String
+}
+
+entity Participant {
+	@Id idParticipant String,
+    codeParticipant String,
+    codeBanque String,
+    nomBanque String,
+    libelle String,
+    pays String,
+    isActif Boolean
+}
+
+entity Agence {
+	@Id idAgence String,
+    codeAgence String,
+    nomAgence String,
+}
+
+entity Banque {
+	@Id idBanque String,
+    code String,
+    devise Devise,
+    langue Langue,
+    logo String,
+    codeSwift String,
+    codeIban String,
+    codePays String,
+    fuseauHoraire String,
+    cutOffTime String,
+    codeParticipant String,
+    libelleParticipant String
+}
+
+entity ParametrageGlobal {
+	@Id idParamGlobal String,
+    codeParam String,
+    typeParam String,
+    valeur String
+}
+
+entity ParametrageNotification {
+	@Id idParamNotif String,
+    objetNotif String,
+    typeNotif String,
+    contenu String
+}
+
+entity VariableNotification {
+	@Id idVarNotification String,
+    codeVariable String,
+    description String
+}
+
+entity DispositifSignature {
+	@Id idDispositif String,
+    libelle String
+}
+
+entity DispositifSercurite {
+  idCanal String,
+  idTypeTransaction String,
+  idDispositif String
+}
+
+
+enum Langue {
+	FR,
+    EN
+}
+
+enum Devise {
+	XOF,
+    XAF,
+    EUR,
+    USD
+}
+
+enum StatutCompteBancaire {
+	ACTIF,
+    INACTIF,
+    SUSPENDU
+}
+
+enum StatutAbonne {
+	DESACTIVE,
+    EN_COURS_ACTIVATION,
+    ACTIVE,
+    SUSPENDU,
+    BLOQUE
+}
+
+enum TypePieceIdentite {
+	CNI,
+    PASSEPORT
+}
+
+relationship OneToOne {
+	Client to Contrat
+}
+
+relationship ManyToOne {
+	Client to TypeClient
+    Contrat to TypeContrat
+    CompteBancaire to Contrat
+    Agence to Banque
+}
+
+relationship ManyToOne {
+	ContratAbonnement to Contrat,
+    ContratAbonnement to Abonne
+}
+
+relationship ManyToOne {
+	ContratAbonnementCompte to Contrat,
+    ContratAbonnementCompte to Abonne,
+    ContratAbonnementCompte to CompteBancaire
+}
+
+relationship ManyToOne {
+	DispositifSercurite to Canal,
+    DispositifSercurite to TypeTransaction,
+    DispositifSercurite to DispositifSignature
+}
+
+
+paginate * with pagination
+dto * with mapstruct
+service * with serviceImpl
+search * with elasticsearch
+
+
+
+
+

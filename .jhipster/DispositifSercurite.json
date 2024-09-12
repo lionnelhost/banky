@@ -1,0 +1,48 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095036"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idCanal",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idTypeTransaction",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "idDispositif",
+      "fieldType": "String"
+    }
+  ],
+  "name": "DispositifSercurite",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "canal",
+      "otherEntityRelationshipName": "dispositifSercurite",
+      "relationshipName": "canal",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "typeTransaction",
+      "otherEntityRelationshipName": "dispositifSercurite",
+      "relationshipName": "typeTransaction",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "dispositifSignature",
+      "otherEntityRelationshipName": "dispositifSercurite",
+      "relationshipName": "dispositifSignature",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

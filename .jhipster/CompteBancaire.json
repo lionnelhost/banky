@@ -1,0 +1,65 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095032"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idCompteBancaire",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "age",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ncp",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sde",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "sin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "soldeDisponible",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "rib",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "StatutCompteBancaire",
+      "fieldValues": "ACTIF,INACTIF,SUSPENDU"
+    }
+  ],
+  "name": "CompteBancaire",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "contrat",
+      "otherEntityRelationshipName": "compteBancaire",
+      "relationshipName": "contrat",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "contratAbonnementCompte",
+      "otherEntityRelationshipName": "compteBancaire",
+      "relationshipName": "contratAbonnementCompte",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

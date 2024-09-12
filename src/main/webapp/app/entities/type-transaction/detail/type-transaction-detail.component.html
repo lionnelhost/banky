@@ -1,0 +1,34 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (typeTransaction(); as typeTransactionRef) {
+      <div>
+        <h2 data-cy="typeTransactionDetailsHeading"><span jhiTranslate="bankyApp.typeTransaction.detail.title">Type Transaction</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.typeTransaction.idTypeTransaction">Id Type Transaction</span></dt>
+          <dd>
+            <span>{{ typeTransactionRef.idTypeTransaction }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.typeTransaction.libelle">Libelle</span></dt>
+          <dd>
+            <span>{{ typeTransactionRef.libelle }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/type-transaction', typeTransactionRef.idTypeTransaction, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

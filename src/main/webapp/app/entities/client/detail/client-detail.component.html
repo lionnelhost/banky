@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (client(); as clientRef) {
+      <div>
+        <h2 data-cy="clientDetailsHeading"><span jhiTranslate="bankyApp.client.detail.title">Client</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.client.idClient">Id Client</span></dt>
+          <dd>
+            <span>{{ clientRef.idClient }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.indiceClient">Indice Client</span></dt>
+          <dd>
+            <span>{{ clientRef.indiceClient }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.nomClient">Nom Client</span></dt>
+          <dd>
+            <span>{{ clientRef.nomClient }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.prenomClient">Prenom Client</span></dt>
+          <dd>
+            <span>{{ clientRef.prenomClient }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.raisonSociale">Raison Sociale</span></dt>
+          <dd>
+            <span>{{ clientRef.raisonSociale }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.telephone">Telephone</span></dt>
+          <dd>
+            <span>{{ clientRef.telephone }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.email">Email</span></dt>
+          <dd>
+            <span>{{ clientRef.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.contrat">Contrat</span></dt>
+          <dd>
+            @if (client()!.contrat) {
+              <div>
+                <a [routerLink]="['/contrat', client()!.contrat?.idContrat, 'view']">{{ clientRef.contrat?.idContrat }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bankyApp.client.typeClient">Type Client</span></dt>
+          <dd>
+            @if (client()!.typeClient) {
+              <div>
+                <a [routerLink]="['/type-client', client()!.typeClient?.idTypeClient, 'view']">{{ clientRef.typeClient?.idTypeClient }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/client', clientRef.idClient, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

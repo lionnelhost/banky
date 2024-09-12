@@ -1,0 +1,61 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095033"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idContrat",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "dateValidite",
+      "fieldType": "Instant"
+    }
+  ],
+  "name": "Contrat",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "typeContrat",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "typeContrat",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "client",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "client",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "compteBancaire",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "compteBancaire",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "contratAbonnement",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "contratAbonnement",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "contratAbonnementCompte",
+      "otherEntityRelationshipName": "contrat",
+      "relationshipName": "contratAbonnementCompte",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

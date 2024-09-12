@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (contratAbonnement(); as contratAbonnementRef) {
+      <div>
+        <h2 data-cy="contratAbonnementDetailsHeading">
+          <span jhiTranslate="bankyApp.contratAbonnement.detail.title">Contrat Abonnement</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ contratAbonnementRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnement.idContrat">Id Contrat</span></dt>
+          <dd>
+            <span>{{ contratAbonnementRef.idContrat }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnement.idAbonne">Id Abonne</span></dt>
+          <dd>
+            <span>{{ contratAbonnementRef.idAbonne }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnement.contrat">Contrat</span></dt>
+          <dd>
+            @if (contratAbonnement()!.contrat) {
+              <div>
+                <a [routerLink]="['/contrat', contratAbonnement()!.contrat?.idContrat, 'view']">{{
+                  contratAbonnementRef.contrat?.idContrat
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contratAbonnement.abonne">Abonne</span></dt>
+          <dd>
+            @if (contratAbonnement()!.abonne) {
+              <div>
+                <a [routerLink]="['/abonne', contratAbonnement()!.abonne?.idAbonne, 'view']">{{ contratAbonnementRef.abonne?.idAbonne }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/contrat-abonnement', contratAbonnementRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

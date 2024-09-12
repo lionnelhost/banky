@@ -8,7 +8,26 @@
       "entities": {
         "main": "Entités",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "abonne": "Abonne",
+        "agence": "Agence",
+        "banque": "Banque",
+        "canal": "Canal",
+        "client": "Client",
+        "compteBancaire": "Compte Bancaire",
+        "contrat": "Contrat",
+        "contratAbonnement": "Contrat Abonnement",
+        "contratAbonnementCompte": "Contrat Abonnement Compte",
+        "dispositifSercurite": "Dispositif Sercurite",
+        "dispositifSignature": "Dispositif Signature",
+        "jourFerier": "Jour Ferier",
+        "messageErreur": "Message Erreur",
+        "parametrageGlobal": "Parametrage Global",
+        "parametrageNotification": "Parametrage Notification",
+        "participant": "Participant",
+        "typeClient": "Type Client",
+        "typeContrat": "Type Contrat",
+        "typeTransaction": "Type Transaction",
+        "variableNotification": "Variable Notification"
       },
       "account": {
         "main": "Compte",

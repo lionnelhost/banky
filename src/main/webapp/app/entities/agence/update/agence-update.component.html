@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-agence-heading" data-cy="AgenceCreateUpdateHeading" jhiTranslate="bankyApp.agence.home.createOrEditLabel">
+        Créer ou éditer un Agence
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idAgence" jhiTranslate="bankyApp.agence.idAgence">Id Agence</label>
+          <input
+            type="text"
+            class="form-control"
+            name="idAgence"
+            id="field_idAgence"
+            data-cy="idAgence"
+            formControlName="idAgence"
+            [readonly]="editForm.get('idAgence')!.disabled"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_codeAgence" jhiTranslate="bankyApp.agence.codeAgence">Code Agence</label>
+          <input
+            type="text"
+            class="form-control"
+            name="codeAgence"
+            id="field_codeAgence"
+            data-cy="codeAgence"
+            formControlName="codeAgence"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nomAgence" jhiTranslate="bankyApp.agence.nomAgence">Nom Agence</label>
+          <input type="text" class="form-control" name="nomAgence" id="field_nomAgence" data-cy="nomAgence" formControlName="nomAgence" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_banque" jhiTranslate="bankyApp.agence.banque">Banque</label>
+          <select
+            class="form-control"
+            id="field_banque"
+            data-cy="banque"
+            name="banque"
+            formControlName="banque"
+            [compareWith]="compareBanque"
+          >
+            <option [ngValue]="null"></option>
+            @for (banqueOption of banquesSharedCollection; track $index) {
+              <option [ngValue]="banqueOption">{{ banqueOption.idBanque }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

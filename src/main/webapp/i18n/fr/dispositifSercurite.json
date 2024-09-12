@@ -1,0 +1,29 @@
+{
+  "bankyApp": {
+    "dispositifSercurite": {
+      "home": {
+        "title": "DispositifSercurites",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Dispositif Sercurite",
+        "createOrEditLabel": "Créer ou éditer un Dispositif Sercurite",
+        "notFound": "Aucun Dispositif Sercurite trouvé"
+      },
+      "created": "Un nouveau Dispositif Sercurite a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Dispositif Sercurite avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Dispositif Sercurite avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Dispositif Sercurite {{ id }} ?"
+      },
+      "detail": {
+        "title": "Dispositif Sercurite"
+      },
+      "id": "ID",
+      "idCanal": "Id Canal",
+      "idTypeTransaction": "Id Type Transaction",
+      "idDispositif": "Id Dispositif",
+      "canal": "Canal",
+      "typeTransaction": "Type Transaction",
+      "dispositifSignature": "Dispositif Signature"
+    }
+  }
+}

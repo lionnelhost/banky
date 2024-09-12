@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-parametrage-notification-heading"
+        data-cy="ParametrageNotificationCreateUpdateHeading"
+        jhiTranslate="bankyApp.parametrageNotification.home.createOrEditLabel"
+      >
+        Créer ou éditer un Parametrage Notification
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idParamNotif" jhiTranslate="bankyApp.parametrageNotification.idParamNotif"
+            >Id Param Notif</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="idParamNotif"
+            id="field_idParamNotif"
+            data-cy="idParamNotif"
+            formControlName="idParamNotif"
+            [readonly]="editForm.get('idParamNotif')!.disabled"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_objetNotif" jhiTranslate="bankyApp.parametrageNotification.objetNotif">Objet Notif</label>
+          <input
+            type="text"
+            class="form-control"
+            name="objetNotif"
+            id="field_objetNotif"
+            data-cy="objetNotif"
+            formControlName="objetNotif"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_typeNotif" jhiTranslate="bankyApp.parametrageNotification.typeNotif">Type Notif</label>
+          <input type="text" class="form-control" name="typeNotif" id="field_typeNotif" data-cy="typeNotif" formControlName="typeNotif" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contenu" jhiTranslate="bankyApp.parametrageNotification.contenu">Contenu</label>
+          <input type="text" class="form-control" name="contenu" id="field_contenu" data-cy="contenu" formControlName="contenu" />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

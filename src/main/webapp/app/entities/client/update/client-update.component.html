@@ -1,0 +1,127 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-client-heading" data-cy="ClientCreateUpdateHeading" jhiTranslate="bankyApp.client.home.createOrEditLabel">
+        Créer ou éditer un Client
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_idClient" jhiTranslate="bankyApp.client.idClient">Id Client</label>
+          <input
+            type="text"
+            class="form-control"
+            name="idClient"
+            id="field_idClient"
+            data-cy="idClient"
+            formControlName="idClient"
+            [readonly]="editForm.get('idClient')!.disabled"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_indiceClient" jhiTranslate="bankyApp.client.indiceClient">Indice Client</label>
+          <input
+            type="text"
+            class="form-control"
+            name="indiceClient"
+            id="field_indiceClient"
+            data-cy="indiceClient"
+            formControlName="indiceClient"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nomClient" jhiTranslate="bankyApp.client.nomClient">Nom Client</label>
+          <input type="text" class="form-control" name="nomClient" id="field_nomClient" data-cy="nomClient" formControlName="nomClient" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_prenomClient" jhiTranslate="bankyApp.client.prenomClient">Prenom Client</label>
+          <input
+            type="text"
+            class="form-control"
+            name="prenomClient"
+            id="field_prenomClient"
+            data-cy="prenomClient"
+            formControlName="prenomClient"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_raisonSociale" jhiTranslate="bankyApp.client.raisonSociale">Raison Sociale</label>
+          <input
+            type="text"
+            class="form-control"
+            name="raisonSociale"
+            id="field_raisonSociale"
+            data-cy="raisonSociale"
+            formControlName="raisonSociale"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_telephone" jhiTranslate="bankyApp.client.telephone">Telephone</label>
+          <input type="text" class="form-control" name="telephone" id="field_telephone" data-cy="telephone" formControlName="telephone" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" jhiTranslate="bankyApp.client.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contrat" jhiTranslate="bankyApp.client.contrat">Contrat</label>
+          <select
+            class="form-control"
+            id="field_contrat"
+            data-cy="contrat"
+            name="contrat"
+            formControlName="contrat"
+            [compareWith]="compareContrat"
+          >
+            <option [ngValue]="null"></option>
+            @for (contratOption of contratsCollection; track $index) {
+              <option [ngValue]="contratOption">{{ contratOption.idContrat }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_typeClient" jhiTranslate="bankyApp.client.typeClient">Type Client</label>
+          <select
+            class="form-control"
+            id="field_typeClient"
+            data-cy="typeClient"
+            name="typeClient"
+            formControlName="typeClient"
+            [compareWith]="compareTypeClient"
+          >
+            <option [ngValue]="null"></option>
+            @for (typeClientOption of typeClientsSharedCollection; track $index) {
+              <option [ngValue]="typeClientOption">{{ typeClientOption.idTypeClient }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Annuler</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Sauvegarder</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

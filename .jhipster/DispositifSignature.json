@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095037"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idDispositif",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    }
+  ],
+  "name": "DispositifSignature",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "dispositifSercurite",
+      "otherEntityRelationshipName": "dispositifSignature",
+      "relationshipName": "dispositifSercurite",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

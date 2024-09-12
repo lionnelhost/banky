@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (contrat(); as contratRef) {
+      <div>
+        <h2 data-cy="contratDetailsHeading"><span jhiTranslate="bankyApp.contrat.detail.title">Contrat</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.contrat.idContrat">Id Contrat</span></dt>
+          <dd>
+            <span>{{ contratRef.idContrat }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contrat.dateValidite">Date Validite</span></dt>
+          <dd>
+            <span>{{ contratRef.dateValidite | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.contrat.typeContrat">Type Contrat</span></dt>
+          <dd>
+            @if (contrat()!.typeContrat) {
+              <div>
+                <a [routerLink]="['/type-contrat', contrat()!.typeContrat?.idTypeContrat, 'view']">{{
+                  contratRef.typeContrat?.idTypeContrat
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/contrat', contratRef.idContrat, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

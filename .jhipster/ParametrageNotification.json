@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095041"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idParamNotif",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "objetNotif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeNotif",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contenu",
+      "fieldType": "String"
+    }
+  ],
+  "name": "ParametrageNotification",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

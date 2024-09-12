@@ -1,0 +1,33 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095040"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idParamGlobal",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "codeParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "typeParam",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "valeur",
+      "fieldType": "String"
+    }
+  ],
+  "name": "ParametrageGlobal",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

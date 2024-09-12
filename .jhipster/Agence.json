@@ -1,0 +1,37 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095028"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idAgence",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "codeAgence",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomAgence",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Agence",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "banque",
+      "otherEntityRelationshipName": "agence",
+      "relationshipName": "banque",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

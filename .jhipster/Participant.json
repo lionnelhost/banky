@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20240912095042"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idParticipant",
+      "fieldType": "String",
+      "options": {
+        "id": true
+      }
+    },
+    {
+      "fieldName": "codeParticipant",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "codeBanque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nomBanque",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "libelle",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "pays",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "isActif",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Participant",
+  "pagination": "pagination",
+  "relationships": [],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

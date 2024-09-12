@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (agence(); as agenceRef) {
+      <div>
+        <h2 data-cy="agenceDetailsHeading"><span jhiTranslate="bankyApp.agence.detail.title">Agence</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.agence.idAgence">Id Agence</span></dt>
+          <dd>
+            <span>{{ agenceRef.idAgence }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.agence.codeAgence">Code Agence</span></dt>
+          <dd>
+            <span>{{ agenceRef.codeAgence }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.agence.nomAgence">Nom Agence</span></dt>
+          <dd>
+            <span>{{ agenceRef.nomAgence }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.agence.banque">Banque</span></dt>
+          <dd>
+            @if (agence()!.banque) {
+              <div>
+                <a [routerLink]="['/banque', agence()!.banque?.idBanque, 'view']">{{ agenceRef.banque?.idBanque }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/agence', agenceRef.idAgence, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

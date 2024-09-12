@@ -1,0 +1,31 @@
+{
+  "bankyApp": {
+    "client": {
+      "home": {
+        "title": "Clients",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Client",
+        "createOrEditLabel": "Créer ou éditer un Client",
+        "notFound": "Aucun Client trouvé"
+      },
+      "created": "Un nouveau Client a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Client avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Client avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Client {{ id }} ?"
+      },
+      "detail": {
+        "title": "Client"
+      },
+      "idClient": "Id Client",
+      "indiceClient": "Indice Client",
+      "nomClient": "Nom Client",
+      "prenomClient": "Prenom Client",
+      "raisonSociale": "Raison Sociale",
+      "telephone": "Telephone",
+      "email": "Email",
+      "contrat": "Contrat",
+      "typeClient": "Type Client"
+    }
+  }
+}

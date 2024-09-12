@@ -1,0 +1,34 @@
+{
+  "bankyApp": {
+    "abonne": {
+      "home": {
+        "title": "Abonnes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Abonne",
+        "createOrEditLabel": "Créer ou éditer un Abonne",
+        "notFound": "Aucun Abonne trouvé"
+      },
+      "created": "Un nouveau Abonne a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Abonne avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Abonne avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Abonne {{ id }} ?"
+      },
+      "detail": {
+        "title": "Abonne"
+      },
+      "idAbonne": "Id Abonne",
+      "indiceClient": "Indice Client",
+      "nomAbonne": "Nom Abonne",
+      "prenomAbonne": "Prenom Abonne",
+      "telephone": "Telephone",
+      "email": "Email",
+      "typePieceIdentite": "Type Piece Identite",
+      "numPieceIdentite": "Num Piece Identite",
+      "statut": "Statut",
+      "identifiant": "Identifiant",
+      "contratAbonnement": "Contrat Abonnement",
+      "contratAbonnementCompte": "Contrat Abonnement Compte"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "bankyApp": {
+    "canal": {
+      "home": {
+        "title": "Canals",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Canal",
+        "createOrEditLabel": "Créer ou éditer un Canal",
+        "notFound": "Aucun Canal trouvé"
+      },
+      "created": "Un nouveau Canal a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Canal avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Canal avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Canal {{ id }} ?"
+      },
+      "detail": {
+        "title": "Canal"
+      },
+      "idCanal": "Id Canal",
+      "libelle": "Libelle",
+      "dispositifSercurite": "Dispositif Sercurite"
+    }
+  }
+}

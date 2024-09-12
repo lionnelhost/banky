@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (banque(); as banqueRef) {
+      <div>
+        <h2 data-cy="banqueDetailsHeading"><span jhiTranslate="bankyApp.banque.detail.title">Banque</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="bankyApp.banque.idBanque">Id Banque</span></dt>
+          <dd>
+            <span>{{ banqueRef.idBanque }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.code">Code</span></dt>
+          <dd>
+            <span>{{ banqueRef.code }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.devise">Devise</span></dt>
+          <dd>
+            <span [jhiTranslate]="'bankyApp.Devise.' + (banqueRef.devise ?? 'null')">{{
+              { null: '', XOF: 'XOF', XAF: 'XAF', EUR: 'EUR', USD: 'USD' }[banqueRef.devise ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.langue">Langue</span></dt>
+          <dd>
+            <span [jhiTranslate]="'bankyApp.Langue.' + (banqueRef.langue ?? 'null')">{{
+              { null: '', FR: 'FR', EN: 'EN' }[banqueRef.langue ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.logo">Logo</span></dt>
+          <dd>
+            <span>{{ banqueRef.logo }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.codeSwift">Code Swift</span></dt>
+          <dd>
+            <span>{{ banqueRef.codeSwift }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.codeIban">Code Iban</span></dt>
+          <dd>
+            <span>{{ banqueRef.codeIban }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.codePays">Code Pays</span></dt>
+          <dd>
+            <span>{{ banqueRef.codePays }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.fuseauHoraire">Fuseau Horaire</span></dt>
+          <dd>
+            <span>{{ banqueRef.fuseauHoraire }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.cutOffTime">Cut Off Time</span></dt>
+          <dd>
+            <span>{{ banqueRef.cutOffTime }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.codeParticipant">Code Participant</span></dt>
+          <dd>
+            <span>{{ banqueRef.codeParticipant }}</span>
+          </dd>
+          <dt><span jhiTranslate="bankyApp.banque.libelleParticipant">Libelle Participant</span></dt>
+          <dd>
+            <span>{{ banqueRef.libelleParticipant }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Retour</span>
+        </button>
+
+        <button type="button" [routerLink]="['/banque', banqueRef.idBanque, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Editer</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
